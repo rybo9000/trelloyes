@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import List from './composition/List';
 import './App.css';
 
-function App() {
+function App(props) {
+
+  
+  // create array of card objects
+  function buildCardArray(cards){
+    
+    const cardArray = cards.map((id) => {
+      return props.store.allCards[id];
+    })
+    console.log(cardArray);
+    return cardArray;
+  }
+  
+  // create array of List components with required props
+  const listArray = props.store.lists.map((list) => {
+
+    return (
+      <List header={list.header} key={list.id} cards={buildCardArray(list.cardIds)}/>
+    )
+  })
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main className='App'>
+      <header>
+        <h1></h1>
       </header>
-    </div>
+      <div className="App-list">
+        {listArray}
+      </div>
+
+    </main>
   );
 }
 
