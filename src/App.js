@@ -25,7 +25,7 @@ function App(props) {
   
   return (
     <main className='App'>
-      <header>
+      <header className="App-header">
         <h1></h1>
       </header>
       <div className="App-list">

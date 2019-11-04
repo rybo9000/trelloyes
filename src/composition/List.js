@@ -14,7 +14,7 @@ function List(props) {
     
     return (
         <section className="List">
-            <header>
+            <header className="List-header">
                 {props.header}
             </header>
             <div className="List-cards">
