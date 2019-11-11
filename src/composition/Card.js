@@ -11,6 +11,7 @@ function Card(props) {
             <p>
                 {props.content}
             </p>
+
         </div>
     )
 }
