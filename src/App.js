@@ -1,39 +1,61 @@
 import React from 'react';
 import List from './composition/List';
 import './App.css';
+import STORE from './store';
 
-function App(props) {
+class App extends React.Component{
 
+  state = {
+    store: STORE
+  }
+  
+  onDelete = (item) => {
+    
+    
+
+    console.log("delete clicked", item)
+  }
+
+  addRandom = (item) => {
+    console.log("added random", item)
+  }
   
   // create array of card objects
-  function buildCardArray(cards){
+  buildCardArray = (cards) => {
     
     const cardArray = cards.map((id) => {
-      return props.store.allCards[id];
+      return this.state.store.allCards[id];
     })
-    console.log(cardArray);
+
     return cardArray;
   }
   
   // create array of List components with required props
-  const listArray = props.store.lists.map((list) => {
+  listArray = () => {
 
-    return (
-      <List header={list.header} key={list.id} cards={buildCardArray(list.cardIds)}/>
+    return this.state.store.lists.map((list) => {
+    
+      return (
+      <List header={list.header} listKey={list.id} cards={this.buildCardArray(list.cardIds)} onDelete={this.onDelete} addRandom={this.addRandom}/>
     )
-  })
+    })
+  }
   
-  return (
-    <main className='App'>
-      <header className="App-header">
-        <h1></h1>
-      </header>
-      <div className="App-list">
-        {listArray}
-      </div>
+  render() {
+  
+    return (
+      <main className='App'>
+        <header className="App-header">
+          <h1></h1>
+        </header>
+        <div className="App-list">
+          {this.listArray()}
+        </div>
 
-    </main>
-  );
+      </main>
+    )
+  }
 }
+
 
 export default App;

@@ -2,9 +2,10 @@ import React from 'react';
 import './Card.css';
 
 function Card(props) {
+
     return(
         <div className="Card">
-            <button type="button">delete</button>
+            <button type="button" onClick={() => props.onDelete(props.cardKey)}>delete</button>
             <h3>
                 {props.title}
             </h3>
