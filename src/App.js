@@ -7,7 +7,9 @@ class App extends React.Component{
   render() {
   
     const listArray = this.props.store.lists.map((list) => {
-      return <List header={list.header} key={list.id} cards={list.cardIds}/>
+      return <List header={list.header} key={list.id} cards={list.cardIds.map((id) => {
+        return this.props.store.allCards[id]
+      })}/>
     })
     
     return (

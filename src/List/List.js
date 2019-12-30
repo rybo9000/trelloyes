@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
+import './List.css';
 
 class List extends React.Component {
     render() {
@@ -10,7 +11,7 @@ class List extends React.Component {
         
         return (
             <section className="List">
-                <header>{this.props.header}</header>
+                <header className="List-header"><h2>{this.props.header}</h2></header>
                 <div className="List-cards">
                     {cardArray}
                 </div>
